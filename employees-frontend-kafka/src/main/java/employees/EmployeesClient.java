@@ -24,6 +24,6 @@ public interface EmployeesClient {
     @PostExchange
     Employee createEmployee(@RequestBody Employee employee);
 
-    @GetMapping
+    @GetExchange("/{employeeId}")
     Employee findEmployeeById(@PathVariable Long employeeId);
 }
