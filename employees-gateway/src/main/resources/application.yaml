@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: employees-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: employees-backend
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/employees/**
+              filters:
+                - AddRequestHeader=X-Training, Bootiful Gateway
+                - name: CircuitBreaker
+                  args:
+                    name: employeesCircuitBreaker
+                    fallbackUri: forward:/api/dummy-employees
+
+
+server:
+  port: 8000

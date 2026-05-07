@@ -1,0 +1,9 @@
+POST http://localhost:8080/actuator/loggers/employees
+Content-Type: application/json
+
+{
+  "configuredLevel": "INFO"
+}
+
+###
+GET http://localhost:8080/actuator/circuitbreakers
