@@ -4,14 +4,20 @@ server:
 spring:
   application:
     name: employees-frontend
-  kafka:
-    producer:
-      value-serializer: org.springframework.kafka.support.serializer.JacksonJsonSerializer
+  cloud:
+    stream:
+      function:
+        bindings:
+          employeeCreated-in-0: employees-backend-response
 
 logging:
   level:
     employees: DEBUG
     org.hibernate.SQL: TRACE
+    org:
+      springframework:
+        core:
+          retry: debug
 
 employees:
   backend-url: http://localhost:8081
