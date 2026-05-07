@@ -9,6 +9,10 @@ logging:
   level:
     employees: DEBUG
     org.hibernate.SQL: TRACE
+    org:
+      springframework:
+        core:
+          retry: debug
 
 employees:
   backend-url: http://localhost:8081
