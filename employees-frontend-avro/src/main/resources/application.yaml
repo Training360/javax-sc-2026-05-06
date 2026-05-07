@@ -10,7 +10,7 @@ spring:
         bindings:
           employeeCreated-in-0: employees-backend-response
       bindings:
-        logikai-request:
+        employees-backend-request:
           content-type: application/*+avro
 
 logging:
