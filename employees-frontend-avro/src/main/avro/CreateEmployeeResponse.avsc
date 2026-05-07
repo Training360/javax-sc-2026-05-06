@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "CreateEmployeeResponse",
+  "namespace": "employees",
+  "fields": [
+    {
+      "name": "id",
+      "type": "long"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    }
+  ]
+}

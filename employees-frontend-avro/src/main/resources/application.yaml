@@ -9,6 +9,9 @@ spring:
       function:
         bindings:
           employeeCreated-in-0: employees-backend-response
+      bindings:
+        logikai-request:
+          content-type: application/*+avro
 
 logging:
   level:
