@@ -1,8 +1,10 @@
 package employees;
 
+import com.nimbusds.jose.proc.SecurityContext;
 import io.micrometer.observation.annotation.Observed;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +25,7 @@ public class EmployeesController {
     public ModelAndView listEmployees(Principal principal) {
         log.info("Employees list page");
         log.info("Principal: {}", principal);
+//        log.info("User: {}", principal.getName());
         Map<String, Object> model = new HashMap<>();
         model.put("employees", employeesClient.listEmployees());
         model.put("command", new Employee());
