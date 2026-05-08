@@ -11,3 +11,12 @@ docker run -d -p 8090:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_
 ```shell
 docker run --name lgtm -p 3000:3000 -p 4040:4040 -p 4317:4317 -p 4318:4318 -p 9090:9090 -d grafana/otel-lgtm:latest
 ```
+
+```shell
+curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+set JAVA_TOOL_OPTIONS="-javaagent:opentelemetry-javaagent.jar" 
+set OTEL_TRACES_EXPORTER=otlp
+set OTEL_METRICS_EXPORTER=otlp
+set OTEL_LOGS_EXPORTER=otlp
+set OTEL_METRIC_EXPORT_INTERVAL=15000
+```
