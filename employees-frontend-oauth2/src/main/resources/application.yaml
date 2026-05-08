@@ -17,6 +17,7 @@ spring:
           keycloak:
             issuer-uri: http://localhost:8090/realms/EmployeesRealm
             user-name-attribute: preferred_username
+            authorization-uri: http://localhost:8090/realms/EmployeesRealm/protocol/openid-connect/auth?prompt=login
 
 logging:
   level:

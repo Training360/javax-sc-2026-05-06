@@ -20,3 +20,15 @@ set OTEL_METRICS_EXPORTER=otlp
 set OTEL_LOGS_EXPORTER=otlp
 set OTEL_METRIC_EXPORT_INTERVAL=15000
 ```
+
+## Keycloak automatikus visszajelentkezés megakadályozása
+
+A Keycloak az átirányításkor értelmezi a `prompt=login` paramétert, és ilyenkor akkor is
+kiteszi a bejelentkezési formot, ha van a felhasználónak session-je a Keycloakon, azaz
+meg tudna történni az automatikus bejelentkezés.
+
+Ez a következő property-vel állítható be:
+
+```
+spring.security.oauth2.client.provider.keycloak.authorization-uri=http://localhost:8090/realms/EmployeesRealm/protocol/openid-connect/auth?prompt=login
+```
