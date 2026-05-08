@@ -25,15 +25,11 @@ public class ClientConfig {
     RestClientHttpServiceGroupConfigurer groupConfigurer(EmployeesProperties employeesProperties, OAuth2AuthorizedClientManager authorizedClientManager) {
         log.info("Employees backend url: {}", employeesProperties.getBackendUrl());
 
-        var interceptor = new OAuth2ClientHttpRequestInterceptor(authorizedClientManager);
+        var interceptor = new OptionalTokenInterceptor(authorizedClientManager);
 
         return groups ->
             groups.filterByName("employees-backend").forEachClient((group, builder) -> {
                 builder.baseUrl(employeesProperties.getBackendUrl());
-                builder.requestInterceptor(((request, body, execution) -> {
-                    clientRegistrationId("keycloak").accept(request.getAttributes());
-                    return execution.execute(request, body);
-                }));
                 builder.requestInterceptor(interceptor);
             });
 
