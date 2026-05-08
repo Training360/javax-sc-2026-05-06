@@ -20,8 +20,9 @@ public class EmployeesController {
 
     @GetMapping("/")
     @Observed(name = "employees.list", contextualName = "employees.list", lowCardinalityKeyValues = { "client-type", "rest-client" })
-    public ModelAndView listEmployees() {
+    public ModelAndView listEmployees(Principal principal) {
         log.info("Employees list page");
+        log.info("Principal: {}", principal);
         Map<String, Object> model = new HashMap<>();
         model.put("employees", employeesClient.listEmployees());
         model.put("command", new Employee());
